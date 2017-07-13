@@ -32,7 +32,7 @@ It stores files inside as simple as possible, nothing more.
   
 ##### Extract: `bag -x [options] [-C <dir> | <dir> | <pattern>]`
 
-  `-C <dir>`  Change to <dir> before processing remaining files
+  `-C <dir>`  Change to `<dir>` before processing remaining files
   
   `<dir>`  extract items from archive to this directory
   
