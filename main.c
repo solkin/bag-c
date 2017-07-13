@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
                     "  <dir>  extract items from archive to this directory\n"
                     "  <pattern>  If specified, extract only entries that match\n"
                     "bag 1.0.0\n";
-            printf(help);
+            puts(help);
             break;
     }
 }
