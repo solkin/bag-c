@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
                     "  -C <dir>  Change to <dir> before processing remaining files\n"
                     "  <dir>  extract items from archive to this directory\n"
                     "  <pattern>  If specified, extract only entries that match\n"
-                    "bag 1.0.0";
+                    "bag 1.0.0\n";
             printf(help);
             break;
     }
