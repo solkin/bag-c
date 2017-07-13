@@ -6,6 +6,7 @@
 #include <string.h>
 #include <errno.h>
 #include <sys/stat.h>
+#include <stdint.h>
 #include "utils.h"
 
 void put_unsigned_short_be(char buf[2], unsigned short val) {
@@ -13,7 +14,7 @@ void put_unsigned_short_be(char buf[2], unsigned short val) {
     buf[1] = (char) (val & 0xFF);
 }
 
-void put_long_long_be(char buf[8], long long val) {
+void put_long_long_be(char buf[8], long int val) {
     buf[0] = (char) ((val >> 56) & 0xFF);
     buf[1] = (char) ((val >> 48) & 0xFF);
     buf[2] = (char) ((val >> 40) & 0xFF);
@@ -31,8 +32,8 @@ unsigned short get_unsigned_short_be(char buf[2]) {
     return val;
 }
 
-unsigned long long get_long_long_be(char buf[8]) {
-    unsigned long long val;
+long int get_long_long_be(char buf[8]) {
+    long int val;
     val = (uint8_t) buf[7];
     val |= (uint8_t) buf[6] << 8;
     val |= (uint8_t) buf[5] << 16;

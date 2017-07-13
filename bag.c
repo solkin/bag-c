@@ -9,7 +9,6 @@
 #include <string.h>
 #include <errno.h>
 #include <sys/stat.h>
-#include <sys/types.h>
 #include <time.h>
 #include <regex.h>
 #include "bag.h"
@@ -29,9 +28,9 @@ void scan(char *file, char *pattern) {
     time = clock();
     off_t offset = 0;
     fseek(bag, 0L, SEEK_END);
-    long long file_size = ftell(bag);
+    long int file_size = ftell(bag);
     rewind(bag);
-    printf("LENGTH %lli bytes\n", file_size);
+    printf("LENGTH %li bytes\n", file_size);
     while (offset < file_size) {
         struct Record record = read_file(bag, offset);
         offset = record.offset + record.file_size;
@@ -39,7 +38,7 @@ void scan(char *file, char *pattern) {
             reti = regexec(&regex, record.file_path, 0, NULL, 0);
         }
         if (!reti) {
-            printf("FILE %s (%llu bytes)\n", record.file_path, record.file_size);
+            printf("FILE %s (%li bytes)\n", record.file_path, record.file_size);
         }
         free(record.file_path);
     }
@@ -78,7 +77,7 @@ void extract(char *file, char *dir, char *pattern) {
             reti = regexec(&regex, record.file_path, 0, NULL, 0);
         }
         if (!reti) {
-            printf("FILE %s (%llu bytes)\n", record.file_path, record.file_size);
+            printf("FILE %s (%li bytes)\n", record.file_path, record.file_size);
 
             size_t path_length = strlen(record.file_path);
             size_t abs_path_length = strlen(dir) + path_length + 1;
@@ -190,7 +189,7 @@ void read_buffer(FILE *file, char *buf, size_t buf_size) {
     }
 }
 
-void copy_to_file(FILE *in, const char *path, long long length) {
+void copy_to_file(FILE *in, const char *path, long int length) {
     FILE *out;
     out = fopen(path, "w+");
 
@@ -224,7 +223,7 @@ struct Record read_file(FILE *bag, off_t offset) {
     read_buffer(bag, path, path_length);
     path[path_length] = '\0';
     read_buffer(bag, long_long_buffer, 8);
-    unsigned long long file_length = get_long_long_be(long_long_buffer);
+    long int file_length = get_long_long_be(long_long_buffer);
 
     struct Record record;
     record.file_path = malloc(path_length + 1);
