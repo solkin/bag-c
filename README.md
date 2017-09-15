@@ -12,25 +12,28 @@ It stores files inside as simple as possible, nothing more.
 `RAW` - file data
 
 ### Usage
-##### First option must be a mode specifier:
+#### First option must be a mode specifier:
 
   `-c` Create  `-s` Scan  `-x` Extract
   
-##### Common Options:
+#### Common Options:
 
   `-f <filename>`  Location of archive
   
-##### Create: `bag -c [options] [-C <dir> | <dir>]`
+#### Create: 
+  `bag -c [options] [-C <dir> | <dir>]`
 
   `-C <dir>`  Change to `<dir>` before processing remaining files
   
   `<dir>`  add these items to archive
   
-##### List: `bag -s [options] [<pattern>]`
+#### List: 
+  `bag -s [options] [<pattern>]`
 
   `<pattern>`  If specified, list only entries that match
   
-##### Extract: `bag -x [options] [-C <dir> | <dir> | <pattern>]`
+#### Extract: 
+  `bag -x [options] [-C <dir> | <dir> | <pattern>]`
 
   `-C <dir>`  Change to `<dir>` before processing remaining files
   
