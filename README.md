@@ -2,6 +2,8 @@
 Bag is a stupidly simple archive format. 
 It stores files inside as simple as possible, nothing more.
 
+![Screenshot](art/main.png "CLI output")
+
 ### Archive file format
 `16-bit big endian` - file path length
 
