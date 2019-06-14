@@ -4,17 +4,15 @@
 #include "bag.h"
 
 int main(int argc, char *argv[]) {
-    bool isCaseInsensitive = false;
     int opt;
     enum {
         CREATE, SCAN, EXTRACT, HELP
     } mode = HELP;
-    char *bag;
+    char *bag = 0;
     char *dir;
-    char *ch_dir;
+    char *ch_dir = 0;
     char *help;
     char *pattern = 0;
-    bool verbose = false;
 
     while ((opt = getopt(argc, argv, "csxvC:f:")) != -1) {
         switch (opt) {
@@ -26,9 +24,6 @@ int main(int argc, char *argv[]) {
                 break;
             case 'x':
                 mode = EXTRACT;
-                break;
-            case 'v':
-                verbose = true;
                 break;
             case 'C':
                 ch_dir = optarg;
@@ -63,7 +58,7 @@ int main(int argc, char *argv[]) {
             }
             extract(bag, dir, pattern);
             break;
-        case HELP:
+        default:
             help = "bag: manipulate bag archive files\n"
                     "First option must be a mode specifier:\n"
                     "  -c Create  -s Scan  -x Extract\n"
